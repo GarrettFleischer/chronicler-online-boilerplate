@@ -7,39 +7,13 @@
 *.js	.\package.json	/^    "*.js": "lint:eslint"$/;"	f
 .*\\.(css|less|styl|scss|sass)$	.\package.json	/^      ".*\\\\.(css|less|styl|scss|sass)$": "<rootDir>\/internals\/mocks\/cssModule.js",$/;"	f
 .*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$	.\package.json	/^      ".*\\\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>\/internals\/mocks\/image.js"$/;"	f
-App.propTypes.children	.\app\containers\App\index.js	/^  children: React.PropTypes.node,$/;"	p
-AppWithProgressBar.propTypes.location	.\app\components\ProgressBar\index.js	/^    location: React.PropTypes.object,$/;"	p
-Button	.\app\components\Button\index.js	/^function Button(props) {$/;"	f
-Button.propTypes.handleRoute	.\app\components\Button\index.js	/^  handleRoute: PropTypes.func,$/;"	p
-Circle.propTypes.delay	.\app\components\LoadingIndicator\Circle.js	/^  delay: PropTypes.number,$/;"	p
-Footer	.\app\components\Footer\index.js	/^function Footer() {$/;"	f
-H3	.\app\components\H3\index.js	/^function H3(props) {$/;"	f
-HomePage.propTypes.loading	.\app\containers\HomePage\index.js	/^  loading: React.PropTypes.bool,$/;"	p
-Img	.\app\components\Img\index.js	/^function Img(props) {$/;"	f
-Img.propTypes.src	.\app\components\Img\index.js	/^  src: PropTypes.oneOfType([$/;"	p
-IssueIcon	.\app\components\IssueIcon\index.js	/^function IssueIcon(props) {$/;"	f
-IssueIcon.propTypes.className	.\app\components\IssueIcon\index.js	/^  className: React.PropTypes.string,$/;"	p
 LanguageProvider.propTypes.locale	.\app\containers\LanguageProvider\index.js	/^  locale: React.PropTypes.string,$/;"	p
-LanguageProvider.propTypes.locale	.\internals\templates\containers\LanguageProvider\index.js	/^  locale: React.PropTypes.string,$/;"	p
-List	.\app\components\List\index.js	/^function List(props) {$/;"	f
-List.propTypes.component	.\app\components\List\index.js	/^  component: React.PropTypes.func.isRequired,$/;"	p
-ListItem	.\app\components\ListItem\index.js	/^function ListItem(props) {$/;"	f
-ListItem.propTypes.item	.\app\components\ListItem\index.js	/^  item: React.PropTypes.any,$/;"	p
-LocaleToggle.propTypes.onLocaleToggle	.\app\containers\LocaleToggle\index.js	/^  onLocaleToggle: React.PropTypes.func,$/;"	p
-ProgressBar.propTypes.percent	.\app\components\ProgressBar\ProgressBar.js	/^  percent: PropTypes.number.isRequired,$/;"	p
-RepoListItem.propTypes.item	.\app\containers\RepoListItem\index.js	/^  item: React.PropTypes.object,$/;"	p
-ReposList	.\app\components\ReposList\index.js	/^function ReposList({ loading, error, repos }) {$/;"	f
-ReposList.propTypes.loading	.\app\components\ReposList\index.js	/^  loading: PropTypes.bool,$/;"	p
 SwitchCase	.\package.json	/^          "SwitchCase": 1$/;"	f
-Toggle	.\app\components\Toggle\index.js	/^function Toggle(props) {$/;"	f
-Toggle.propTypes.onToggle	.\app\components\Toggle\index.js	/^  onToggle: React.PropTypes.func,$/;"	p
-ToggleOption.propTypes.value	.\app\components\ToggleOption\index.js	/^  value: React.PropTypes.string.isRequired,$/;"	p
 addCheckMark	.\internals\scripts\helpers\checkmark.js	/^function addCheckMark(callback) {$/;"	f
 addXMark	.\internals\scripts\helpers\xmark.js	/^function addXMark(callback) {$/;"	f
 analyze	.\package.json	/^    "analyze": "node .\/internals\/scripts\/analyze.js",$/;"	f
 analyze:clean	.\package.json	/^    "analyze:clean": "rimraf stats.json",$/;"	f
 animateProgress	.\internals\scripts\helpers\progress.js	/^function animateProgress(message, amountOfDots) {$/;"	f
-appReducer	.\app\containers\App\reducer.js	/^function appReducer(state = initialState, action) {$/;"	f
 arrow-body-style	.\package.json	/^      "arrow-body-style": [$/;"	f
 arrow-parens	.\package.json	/^      "arrow-parens": [$/;"	f
 author	.\package.json	/^  "author": "Max Stoiber",$/;"	f
@@ -61,64 +35,6 @@ babel-preset-react	.\package.json	/^    "babel-preset-react": "6.16.0",$/;"	f
 babel-preset-react-hmre	.\package.json	/^    "babel-preset-react-hmre": "1.1.1",$/;"	f
 babel-preset-stage-0	.\package.json	/^    "babel-preset-stage-0": "6.16.0",$/;"	f
 background_color	.\app\manifest.json	/^  "background_color": "#FFFFFF"$/;"	f
-boilerplate.components.Footer.author.message	.\app\translations\de.json	/^  "boilerplate.components.Footer.author.message": "Mit Liebe gemacht von {author}.",$/;"	f
-boilerplate.components.Footer.author.message	.\app\translations\en.json	/^  "boilerplate.components.Footer.author.message": "Made with love by {author}.",$/;"	f
-boilerplate.components.Footer.license.message	.\app\translations\de.json	/^  "boilerplate.components.Footer.license.message": "Dieses Projekt wird unter der MIT-Lizenz veröffentlicht.",$/;"	f
-boilerplate.components.Footer.license.message	.\app\translations\en.json	/^  "boilerplate.components.Footer.license.message": "This project is licensed under the MIT license.",$/;"	f
-boilerplate.components.Header.features	.\app\translations\de.json	/^  "boilerplate.components.Header.features": "",$/;"	f
-boilerplate.components.Header.features	.\app\translations\en.json	/^  "boilerplate.components.Header.features": "Features",$/;"	f
-boilerplate.components.Header.home	.\app\translations\de.json	/^  "boilerplate.components.Header.home": "",$/;"	f
-boilerplate.components.Header.home	.\app\translations\en.json	/^  "boilerplate.components.Header.home": "Home",$/;"	f
-boilerplate.containers.FeaturePage.css.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.css.header": "",$/;"	f
-boilerplate.containers.FeaturePage.css.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.css.header": "Features",$/;"	f
-boilerplate.containers.FeaturePage.css.message	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.css.message": "Die nächste Generation von CSS",$/;"	f
-boilerplate.containers.FeaturePage.css.message	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.css.message": "Next generation CSS",$/;"	f
-boilerplate.containers.FeaturePage.feedback.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.feedback.header": "Sofortiges Feedback",$/;"	f
-boilerplate.containers.FeaturePage.feedback.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.feedback.header": "Instant feedback",$/;"	f
-boilerplate.containers.FeaturePage.feedback.message	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.feedback.message": "Genießen Sie die beste Entwicklungserfahrung und programmieren Sie Ihre App so schnell wie noch nie! Ihre Änderungen an dem CSS und JavaScript sind sofort reflektiert, ohne die Seite aktualisieren zu müssen. So bleibt der Anwendungszustand bestehen, auch wenn Sie etwas in dem darunter liegenden Code aktualisieren!",$/;"	f
-boilerplate.containers.FeaturePage.feedback.message	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.feedback.message": "Enjoy the best DX and code your app at the speed of thought! Your\\n    saved changes to the CSS and JS are reflected instantaneously\\n    without refreshing the page. Preserve application state even when\\n    you update something in the underlying code!",$/;"	f
-boilerplate.containers.FeaturePage.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.header": "",$/;"	f
-boilerplate.containers.FeaturePage.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.header": "Features",$/;"	f
-boilerplate.containers.FeaturePage.internationalization.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.internationalization.header": "Komplette i18n Standard-Internationalisierung und Pluralisierung",$/;"	f
-boilerplate.containers.FeaturePage.internationalization.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.internationalization.header": "Complete i18n Standard Internationalization & Pluralization",$/;"	f
-boilerplate.containers.FeaturePage.internationalization.message	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.internationalization.message": "Das Internet ist global. Mehrsprachige- und Pluralisierungsunterstützung ist entscheidend für große Web-Anwendungen.",$/;"	f
-boilerplate.containers.FeaturePage.internationalization.message	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.internationalization.message": "Scalable apps need to support multiple languages, easily add and support multiple languages with `react-intl`.",$/;"	f
-boilerplate.containers.FeaturePage.javascript.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.javascript.header": "Das Internet ist global. Mehrsprachige- und Pluralisierungsunterstützung ist entscheidend für große Web-Anwendungen.",$/;"	f
-boilerplate.containers.FeaturePage.javascript.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.javascript.header": "Next generation JavaScript",$/;"	f
-boilerplate.containers.FeaturePage.javascript.message	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.javascript.message": "Benutzen Sie ES6 template strings, object destructuring, arrow functions, JSX syntax und mehr, heute.",$/;"	f
-boilerplate.containers.FeaturePage.javascript.message	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.javascript.message": "Use template strings, object destructuring, arrow functions, JSX\\n    syntax and more, today.",$/;"	f
-boilerplate.containers.FeaturePage.network.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.network.header": "",$/;"	f
-boilerplate.containers.FeaturePage.network.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.network.header": "Offline-first",$/;"	f
-boilerplate.containers.FeaturePage.network.message	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.network.message": "The next frontier in performant web apps: availability without a\\n      network connection from the instant your users load the app.",$/;"	f
-boilerplate.containers.FeaturePage.network.message	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.network.message": "The next frontier in performant web apps: availability without a\\n      network connection from the instant your users load the app.",$/;"	f
-boilerplate.containers.FeaturePage.routing.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.routing.header": "Standard Routing",$/;"	f
-boilerplate.containers.FeaturePage.routing.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.routing.header": "Industry-standard routing",$/;"	f
-boilerplate.containers.FeaturePage.routing.message	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.routing.message": "Schreiben Sie CSS, das am selben Ort wie ihre Komponenten ist. Deterministisch generierte, einzigartige Klassennamen halten die Spezifität niedrig während styling Konflikte vermieden werden. Senden Sie nur das CSS an ihre Benutzer welches dann wirklich sichtbar ist für die schnellste Performance!",$/;"	f
-boilerplate.containers.FeaturePage.routing.message	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.routing.message": "Write composable CSS that's co-located with your components for\\n    complete modularity. Unique generated class names keep the\\n    specificity low while eliminating style clashes. Ship only the\\n    styles that are on the page for the best performance.",$/;"	f
-boilerplate.containers.FeaturePage.scaffolding.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.scaffolding.header": "Schnelles Scaffolding",$/;"	f
-boilerplate.containers.FeaturePage.scaffolding.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.scaffolding.header": "Quick scaffolding",$/;"	f
-boilerplate.containers.FeaturePage.scaffolding.message	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.scaffolding.message": "Automatisieren Sie die Kreation von Komponenten, Containern, Routen, Selektoren und Sagas – und ihre Tests – direkt von dem Terminal!",$/;"	f
-boilerplate.containers.FeaturePage.scaffolding.message	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.scaffolding.message": "Automate the creation of components, containers, routes, selectors\\n  and sagas - and their tests - right from the CLI!",$/;"	f
-boilerplate.containers.FeaturePage.state_management.header	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.state_management.header": "Berechenbare Stateverwaltung",$/;"	f
-boilerplate.containers.FeaturePage.state_management.header	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.state_management.header": "Predictable state management",$/;"	f
-boilerplate.containers.FeaturePage.state_management.message	.\app\translations\de.json	/^  "boilerplate.containers.FeaturePage.state_management.message": "Unidirectional data flow erlaubt uns alle Änderungen ihrer Applikation zu loggen und time travel debugging einzusetzen.",$/;"	f
-boilerplate.containers.FeaturePage.state_management.message	.\app\translations\en.json	/^  "boilerplate.containers.FeaturePage.state_management.message": "Unidirectional data flow allows for change logging and time travel\\n    debugging.",$/;"	f
-boilerplate.containers.HomePage.start_project.header	.\app\translations\de.json	/^  "boilerplate.containers.HomePage.start_project.header": "Beginnen Sie Ihr nächstes React Projekt in Sekunden",$/;"	f
-boilerplate.containers.HomePage.start_project.header	.\app\translations\en.json	/^  "boilerplate.containers.HomePage.start_project.header": "Start your next react project in seconds",$/;"	f
-boilerplate.containers.HomePage.start_project.message	.\app\translations\de.json	/^  "boilerplate.containers.HomePage.start_project.message": "Ein skalierendes, offline-first Fundament mit der besten DX und einem Fokus auf Performance und bewährte Methoden",$/;"	f
-boilerplate.containers.HomePage.start_project.message	.\app\translations\en.json	/^  "boilerplate.containers.HomePage.start_project.message": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",$/;"	f
-boilerplate.containers.HomePage.tryme.atPrefix	.\app\translations\de.json	/^  "boilerplate.containers.HomePage.tryme.atPrefix": "",$/;"	f
-boilerplate.containers.HomePage.tryme.atPrefix	.\app\translations\en.json	/^  "boilerplate.containers.HomePage.tryme.atPrefix": "@",$/;"	f
-boilerplate.containers.HomePage.tryme.header	.\app\translations\de.json	/^  "boilerplate.containers.HomePage.tryme.header": "Probiere mich!",$/;"	f
-boilerplate.containers.HomePage.tryme.header	.\app\translations\en.json	/^  "boilerplate.containers.HomePage.tryme.header": "Try me!",$/;"	f
-boilerplate.containers.HomePage.tryme.message	.\app\translations\de.json	/^  "boilerplate.containers.HomePage.tryme.message": "Zeige die Github Repositories von",$/;"	f
-boilerplate.containers.HomePage.tryme.message	.\app\translations\en.json	/^  "boilerplate.containers.HomePage.tryme.message": "Show Github repositories by",$/;"	f
-boilerplate.containers.LocaleToggle.de	.\app\translations\de.json	/^  "boilerplate.containers.LocaleToggle.de": "",$/;"	f
-boilerplate.containers.LocaleToggle.de	.\app\translations\en.json	/^  "boilerplate.containers.LocaleToggle.de": "de",$/;"	f
-boilerplate.containers.LocaleToggle.en	.\app\translations\de.json	/^  "boilerplate.containers.LocaleToggle.en": "",$/;"	f
-boilerplate.containers.LocaleToggle.en	.\app\translations\en.json	/^  "boilerplate.containers.LocaleToggle.en": "en",$/;"	f
-boilerplate.containers.NotFoundPage.header	.\app\translations\de.json	/^  "boilerplate.containers.NotFoundPage.header": "Seite nicht gefunden."$/;"	f
-boilerplate.containers.NotFoundPage.header	.\app\translations\en.json	/^  "boilerplate.containers.NotFoundPage.header": "Page not found."$/;"	f
 branches	.\package.json	/^        "branches": 91,$/;"	f
 browser	.\package.json	/^      "browser": true,$/;"	f
 build	.\package.json	/^    "build": "cross-env NODE_ENV=production webpack --config internals\/webpack\/webpack.prod.babel.js --color -p --progress",$/;"	f
@@ -126,11 +42,9 @@ build:clean	.\package.json	/^    "build:clean": "npm run test:clean && rimraf .\
 build:dll	.\package.json	/^    "build:dll": "node .\/internals\/scripts\/dependencies.js",$/;"	f
 callback	.\internals\scripts\analyze.js	/^function callback() {$/;"	f
 chalk	.\package.json	/^    "chalk": "1.1.3",$/;"	f
-checkStatus	.\app\utils\request.js	/^function checkStatus(response) {$/;"	f
 cheerio	.\package.json	/^    "cheerio": "0.22.0",$/;"	f
 circular-dependency-plugin	.\package.json	/^    "circular-dependency-plugin": "2.0.0",$/;"	f
 class-methods-use-this	.\package.json	/^      "class-methods-use-this": 0,$/;"	f
-class.Component.percent	.\app\components\ProgressBar\ProgressBar.js	/^    percent: -1,$/;"	p
 clean	.\package.json	/^    "clean": "shjs .\/internals\/scripts\/clean.js",$/;"	f
 clean:all	.\package.json	/^    "clean:all": "npm run analyze:clean && npm run test:clean && npm run build:clean",$/;"	f
 collectCoverageFrom	.\package.json	/^    "collectCoverageFrom": [$/;"	f
@@ -139,15 +53,12 @@ componentExists	.\internals\generators\utils\componentExists.js	/^function compo
 compression	.\package.json	/^    "compression": "1.6.2",$/;"	f
 config	.\package.json	/^          "config": ".\/internals\/webpack\/webpack.prod.babel.js"$/;"	f
 const.childRoutes	.\app\app.js	/^  childRoutes: createRoutes(store),$/;"	p
-const.childRoutes	.\internals\templates\app.js	/^  childRoutes: createRoutes(store),$/;"	p
 const.component	.\app\app.js	/^  component: App,$/;"	p
-const.component	.\internals\templates\app.js	/^  component: App,$/;"	p
 const.dllPlugin	.\internals\config.js	/^  dllPlugin: {$/;"	p
 const.error	.\server\logger.js	/^  error: (err) => {$/;"	p
 const.message1	.\app\tests\i18n.test.js	/^  message1: 'mensaje predeterminado',$/;"	p
 const.message2	.\app\tests\i18n.test.js	/^  message2: '',$/;"	p
 const.version	.\internals\config.js	/^  version: '3.4.0',$/;"	p
-const.width	.\app\components\ProgressBar\ProgressBar.js	/^    const style = { width: `${(percent <= 0 ? 0 : percent)}%` };$/;"	p
 coverageThreshold	.\package.json	/^    "coverageThreshold": {$/;"	f
 coveralls	.\package.json	/^    "coveralls": "2.11.15",$/;"	f
 coveralls	.\package.json	/^    "coveralls": "cat .\/coverage\/lcov.info | coveralls"$/;"	f
@@ -181,21 +92,14 @@ eslint-plugin-redux-saga	.\package.json	/^    "eslint-plugin-redux-saga": "0.1.5
 eslintConfig	.\package.json	/^  "eslintConfig": {$/;"	f
 eventsource-polyfill	.\package.json	/^    "eventsource-polyfill": "0.9.6",$/;"	f
 exclude	.\package.json	/^    "exclude": [$/;"	f
-export.PureComponent.children	.\internals\templates\containers\App\index.js	/^    children: React.PropTypes.node,$/;"	p
+export.PureComponent.children	.\app\containers\App\index.js	/^    children: React.PropTypes.node,$/;"	p
 export.asyncReducers	.\app\utils\asyncInjectors.js	/^    asyncReducers: isObject,$/;"	p
-export.asyncReducers	.\internals\templates\utils\asyncInjectors.js	/^    asyncReducers: isObject,$/;"	p
 export.dispatch	.\app\utils\asyncInjectors.js	/^    dispatch: isFunction,$/;"	p
-export.dispatch	.\internals\templates\utils\asyncInjectors.js	/^    dispatch: isFunction,$/;"	p
 export.en	.\app\i18n.js	/^  en: formatTranslationMessages('en', enTranslationMessages),$/;"	p
-export.en	.\internals\templates\i18n.js	/^  en: formatTranslationMessages('en', enTranslationMessages),$/;"	p
 export.getState	.\app\utils\asyncInjectors.js	/^    getState: isFunction,$/;"	p
-export.getState	.\internals\templates\utils\asyncInjectors.js	/^    getState: isFunction,$/;"	p
 export.replaceReducer	.\app\utils\asyncInjectors.js	/^    replaceReducer: isFunction,$/;"	p
-export.replaceReducer	.\internals\templates\utils\asyncInjectors.js	/^    replaceReducer: isFunction,$/;"	p
 export.runSaga	.\app\utils\asyncInjectors.js	/^    runSaga: isFunction,$/;"	p
-export.runSaga	.\internals\templates\utils\asyncInjectors.js	/^    runSaga: isFunction,$/;"	p
 export.subscribe	.\app\utils\asyncInjectors.js	/^    subscribe: isFunction,$/;"	p
-export.subscribe	.\internals\templates\utils\asyncInjectors.js	/^    subscribe: isFunction,$/;"	p
 exports-loader	.\package.json	/^    "exports-loader": "0.6.3",$/;"	f
 express	.\package.json	/^    "express": "4.14.0",$/;"	f
 extends	.\package.json	/^    "extends": "airbnb",$/;"	f
@@ -205,7 +109,6 @@ fontfaceobserver	.\package.json	/^    "fontfaceobserver": "2.0.7",$/;"	f
 functions	.\package.json	/^        "functions": 98,$/;"	f
 generate	.\package.json	/^    "generate": "plop --plopfile internals\/generators\/index.js",$/;"	f
 global	.\package.json	/^      "global": {$/;"	f
-homeReducer	.\app\containers\HomePage\reducer.js	/^function homeReducer(state = initialState, action) {$/;"	f
 html-loader	.\package.json	/^    "html-loader": "0.4.4",$/;"	f
 html-webpack-plugin	.\package.json	/^    "html-webpack-plugin": "2.24.1",$/;"	f
 icons	.\app\manifest.json	/^  "icons": [$/;"	f
@@ -239,7 +142,6 @@ jsx-a11y/role-has-required-aria-props	.\package.json	/^      "jsx-a11y\/role-has
 jsx-a11y/role-supports-aria-props	.\package.json	/^      "jsx-a11y\/role-supports-aria-props": 2,$/;"	f
 languageIsSupported	.\internals\generators\language\index.js	/^function languageIsSupported(language) {$/;"	f
 languageProviderReducer	.\app\containers\LanguageProvider\reducer.js	/^function languageProviderReducer(state = initialState, action) {$/;"	f
-languageProviderReducer	.\internals\templates\containers\LanguageProvider\reducer.js	/^function languageProviderReducer(state = initialState, action) {$/;"	f
 license	.\package.json	/^  "license": "MIT",$/;"	f
 lines	.\package.json	/^        "lines": 98$/;"	f
 lint	.\package.json	/^    "lint": "npm run lint:js",$/;"	f
@@ -249,7 +151,8 @@ lint:eslint	.\package.json	/^    "lint:eslint": "eslint --ignore-path .gitignore
 lint:js	.\package.json	/^    "lint:js": "npm run lint:eslint -- . ",$/;"	f
 lint:staged	.\package.json	/^    "lint:staged": "lint-staged",$/;"	f
 lodash	.\package.json	/^    "lodash": "4.17.2",$/;"	f
-mapDispatchToProps	.\internals\templates\containers\LanguageProvider\index.js	/^function mapDispatchToProps(dispatch) {$/;"	f
+mapDispatchToProps	.\app\containers\LanguageProvider\index.js	/^function mapDispatchToProps(dispatch) {$/;"	f
+material-ui	.\package.json	/^    "material-ui": "^0.18.6",$/;"	f
 max-len	.\package.json	/^      "max-len": 0,$/;"	f
 minimist	.\package.json	/^    "minimist": "1.2.0",$/;"	f
 module.exports.description	.\internals\generators\component\index.js	/^  description: 'Add an unconnected component',$/;"	p
@@ -279,7 +182,6 @@ null-loader	.\package.json	/^    "null-loader": "0.1.1",$/;"	f
 offline-plugin	.\package.json	/^    "offline-plugin": "4.5.2",$/;"	f
 only	.\package.json	/^        "only": [$/;"	f
 orientation	.\app\manifest.json	/^  "orientation": "portrait",$/;"	f
-parseJSON	.\app\utils\request.js	/^function parseJSON(response) {$/;"	f
 parser	.\package.json	/^    "parser": "babel-eslint",$/;"	f
 parserOptions	.\package.json	/^    "parserOptions": {$/;"	f
 path	.\package.json	/^    "path": "node_modules\/react-boilerplate-dlls",$/;"	f
@@ -307,6 +209,7 @@ react-redux	.\package.json	/^    "react-redux": "4.4.6",$/;"	f
 react-router	.\package.json	/^    "react-router": "3.0.0",$/;"	f
 react-router-redux	.\package.json	/^    "react-router-redux": "4.0.6",$/;"	f
 react-router-scroll	.\package.json	/^    "react-router-scroll": "0.4.1",$/;"	f
+react-tap-event-plugin	.\package.json	/^    "react-tap-event-plugin": "^2.0.1",$/;"	f
 react/forbid-prop-types	.\package.json	/^      "react\/forbid-prop-types": 0,$/;"	f
 react/jsx-filename-extension	.\package.json	/^      "react\/jsx-filename-extension": 0,$/;"	f
 react/jsx-first-prop-new-line	.\package.json	/^      "react\/jsx-first-prop-new-line": [$/;"	f
@@ -324,10 +227,9 @@ require-yield	.\package.json	/^      "require-yield": 0,$/;"	f
 reselect	.\package.json	/^    "reselect": "2.5.4",$/;"	f
 rimraf	.\package.json	/^    "rimraf": "2.5.4",$/;"	f
 routeReducer	.\app\reducers.js	/^function routeReducer(state = routeInitialState, action) {$/;"	f
-routeReducer	.\internals\templates\reducers.js	/^function routeReducer(state = routeInitialState, action) {$/;"	f
 rules	.\package.json	/^    "rules": {$/;"	f
 sagasExists	.\internals\generators\route\index.js	/^function sagasExists(comp) {$/;"	f
-sanitize.css	.\package.json	/^    "sanitize.css": "4.1.0",$/;"	f
+sanitize.css	.\package.json	/^    "sanitize.css": "^5.0.0",$/;"	f
 scripts	.\package.json	/^  "scripts": {$/;"	f
 settings	.\package.json	/^    "settings": {$/;"	f
 setup	.\package.json	/^    "setup": "node .\/internals\/scripts\/setup.js",$/;"	f
@@ -345,7 +247,6 @@ start:prod	.\package.json	/^    "start:prod": "cross-env NODE_ENV=production nod
 start:production	.\package.json	/^    "start:production": "npm run test && npm run build && npm run start:prod",$/;"	f
 start:tunnel	.\package.json	/^    "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",$/;"	f
 start_url	.\app\manifest.json	/^  "start_url": "index.html",$/;"	f
-state.percent	.\app\components\ProgressBar\ProgressBar.js	/^      percent: props.percent,$/;"	p
 statements	.\package.json	/^        "statements": 98,$/;"	f
 style-loader	.\package.json	/^    "style-loader": "0.13.1",$/;"	f
 styled-components	.\package.json	/^    "styled-components": "1.1.2",$/;"	f
@@ -367,5 +268,3 @@ webpack	.\package.json	/^    "webpack": "2.2.0-rc.3",$/;"	f
 webpack-dev-middleware	.\package.json	/^    "webpack-dev-middleware": "1.9.0",$/;"	f
 webpack-hot-middleware	.\package.json	/^    "webpack-hot-middleware": "2.15.0"$/;"	f
 whatwg-fetch	.\package.json	/^    "whatwg-fetch": "2.0.1"$/;"	f
-withProgressBar	.\app\components\ProgressBar\index.js	/^function withProgressBar(WrappedComponent) {$/;"	c
-withProgressBar.state.progress	.\app\components\ProgressBar\index.js	/^        progress: -1,$/;"	p
