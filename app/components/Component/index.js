@@ -10,10 +10,12 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 
-function Component() {
+function Component(props) {
+  const { dragHandle } = props;
   return (
     <Card>
       <CardContent>
+        {dragHandle(<div className="dragHandle">drag me here</div>)}
         <FormattedMessage {...messages.header} />
       </CardContent>
     </Card>
@@ -21,6 +23,8 @@ function Component() {
 }
 
 
-Component.propTypes = {};
+Component.propTypes = {
+  dragHandle: React.PropTypes.OBJECT,
+};
 
 export default Component;

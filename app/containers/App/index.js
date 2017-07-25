@@ -11,8 +11,8 @@
  * the linting exception.
  */
 
-import React from 'react';
 import AppBar from 'material-ui/AppBar';
+import React from 'react';
 
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -21,10 +21,11 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     children: React.PropTypes.node,
   };
 
+
   render() {
     return (
       <div>
-        <AppBar title="Chronicler"></AppBar>
+        <AppBar title="Chronicler" />
         <div>
           {React.Children.toArray(this.props.children)}
         </div>
