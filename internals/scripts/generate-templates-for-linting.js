@@ -71,7 +71,7 @@ const ContainerComponent = containerGen.runActions({
 })
   .then(checkForErrors)
   .then(removeTestsDirFrom('containers/RbGeneratedContainerComponent'))
-  .catch(reportErrorsFor('container/Component'));
+  .catch(reportErrorsFor('container/ComponentFunction'));
 
 const routeGen = plop.getGenerator('route');
 
@@ -84,7 +84,7 @@ ContainerComponent
 ComponentEsclass
   .then(() => routeGen.runActions({ component: 'RbGeneratedComponentEsclass', path: '/generated-route-component' })
     .then(checkForErrors)
-    .catch(reportErrorsFor('route/Component'))
+    .catch(reportErrorsFor('route/ComponentFunction'))
 );
 
 const languageGen = plop.getGenerator('language');

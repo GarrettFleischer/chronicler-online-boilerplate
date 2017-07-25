@@ -11,6 +11,7 @@ import { makeSelectLocationState } from 'containers/App/selectors';
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 import 'file-loader?name=[name].[ext]!./.htaccess';
+import { List } from 'immutable';
 /**
  * app.js
  *
@@ -45,7 +46,7 @@ injectTapEventPlugin();
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
-const initialState = {};
+const initialState = { node: List([]) };
 const store = configureStore(initialState, browserHistory);
 
 // Sync history and store, as the react-router-redux reducer

@@ -19,7 +19,6 @@ injectGlobal`
   body {
     height: 100%;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
   }
 
   body {
@@ -28,6 +27,10 @@ injectGlobal`
 
   body.fontLoaded {
     font-family: 'Roboto', sans-serif;
+  }
+  
+  .hoverable {
+    cursor: 'hover';
   }
 
   ${'' /* #app {

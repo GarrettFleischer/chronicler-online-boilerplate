@@ -5,6 +5,7 @@
  */
 import { defineMessages } from 'react-intl';
 
+
 export default defineMessages({
   addComponent: {
     id: 'app.components.HomePage.addComponent',

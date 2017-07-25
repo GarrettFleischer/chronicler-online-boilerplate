@@ -12,13 +12,14 @@
  */
 
 import AppBar from 'material-ui/AppBar';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    children: React.PropTypes.node,
+    children: PropTypes.node,
   };
 
 
