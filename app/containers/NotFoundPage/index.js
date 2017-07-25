@@ -9,18 +9,19 @@
  * the linting exception.
  */
 
+import Button from 'material-ui/Button';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import RaisedButton from 'material-ui/RaisedButton';
 
 
 import messages from './messages';
+
 
 export default class NotFound extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <RaisedButton>Hello</RaisedButton>
+        <Button raised="true">Hello</Button>
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
