@@ -17,6 +17,7 @@ import makeSelectNode from './selectors';
 
 export class Node extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const { node } = this.props;
     return (
       <div>
         <Helmet
@@ -27,9 +28,9 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
         />
         <FormattedMessage {...messages.header} />
         <DraggableList
-          itemKey="name"
+          itemKey="id"
           template={Component}
-          list={[{ name: 'a' }, { name: 'b' }, { name: 'c' }, { name: 'd' }]}
+          list={node} // {[{ id: 'a' }, { id: 'b' }, { id: 'c' }, { id: 'd' }]}
         />
       </div>
     );
@@ -38,11 +39,13 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
 
 
 Node.propTypes = {
+// eslint-disable-next-line react/no-unused-prop-types
   dispatch: PropTypes.func.isRequired,
+  node: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  Node: makeSelectNode(),
+  node: makeSelectNode(),
 });
 
 

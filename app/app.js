@@ -11,7 +11,8 @@ import { makeSelectLocationState } from 'containers/App/selectors';
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 import 'file-loader?name=[name].[ext]!./.htaccess';
-import { List } from 'immutable';
+/* eslint-enable import/no-unresolved, import/extensions */
+import { initialState } from 'initialState';
 /**
  * app.js
  *
@@ -38,7 +39,7 @@ import { translationMessages } from './i18n';
 // Import root routes
 import createRoutes from './routes';
 import configureStore from './store';
-/* eslint-enable import/no-unresolved, import/extensions */
+
 
 injectTapEventPlugin();
 
@@ -46,7 +47,7 @@ injectTapEventPlugin();
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
-const initialState = { node: List([]) };
+// const initialState = { node: List([]) };
 const store = configureStore(initialState, browserHistory);
 
 // Sync history and store, as the react-router-redux reducer

@@ -8,6 +8,7 @@
 
 import DragHandle from 'material-ui-icons/DragHandle';
 import Card, { CardContent } from 'material-ui/Card';
+import Divider from 'material-ui/Divider';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -18,14 +19,14 @@ export const CText = 'TEXT_COMPONENT';
 export const CNext = 'NEXT_COMPONENT';
 
 
-function content(type) {
-  switch (type) {
+function content(item) {
+  switch (item.type) {
     case CText:
-      return <FormattedMessage {...messages.header} />;
+      return <div style={{ paddingTop: '10px' }}>{item.options.text}</div>;
     case CNext:
-      return <FormattedMessage {...messages.header} />;
+      return <div style={{ paddingTop: '10px' }}>{item.options.text}</div>;
     default:
-      return <span />;
+      return <div><FormattedMessage {...messages.unknown} /></div>;
   }
 }
 
@@ -37,12 +38,13 @@ class Component extends React.PureComponent { // eslint-disable-line react/prefe
 
 
   render() {
-    const { dragHandle, type } = this.props;
+    const { dragHandle, item } = this.props;
     return (
       <Card>
         <CardContent>
           {dragHandle(<div><DragHandle /></div>)}
-          {content(type)}
+          <Divider />
+          {content(item)}
         </CardContent>
       </Card>
     );
@@ -51,8 +53,8 @@ class Component extends React.PureComponent { // eslint-disable-line react/prefe
 
 
 Component.propTypes = {
-  dragHandle: PropTypes.func,
-  type: PropTypes.oneOf([CText, CNext]),
+  dragHandle: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
 };
 
 export default Component;
