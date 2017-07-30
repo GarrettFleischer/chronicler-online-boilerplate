@@ -11,4 +11,8 @@ export default defineMessages({
     id: 'app.containers.Node.header',
     defaultMessage: 'This is Node container !',
   },
+  addComponent: {
+    id: 'app.components.Node.addComponent',
+    defaultMessage: 'add new component',
+  },
 });

@@ -22,9 +22,9 @@ export const CNext = 'NEXT_COMPONENT';
 function content(item) {
   switch (item.type) {
     case CText:
-      return <div style={{ paddingTop: '10px' }}>{item.options.text}</div>;
+      return <div style={{ paddingTop: '10px' }}>{`${item.data.text} ${item.id.toString()}`}</div>;
     case CNext:
-      return <div style={{ paddingTop: '10px' }}>{item.options.text}</div>;
+      return <div style={{ paddingTop: '10px' }}>{`${item.data.text} ${item.id.toString()}`}</div>;
     default:
       return <div><FormattedMessage {...messages.unknown} /></div>;
   }
@@ -35,7 +35,6 @@ class Component extends React.PureComponent { // eslint-disable-line react/prefe
   getDragHeight() {
     return 48;
   }
-
 
   render() {
     const { dragHandle, item } = this.props;

@@ -1,22 +1,29 @@
 import { CNext, CText } from 'components/Component';
-import { List, Map } from 'immutable';
+import { List, Map, Stack } from 'immutable';
 
 
 export const initialState = {
-  node: List([
-    Map({
-      id: '1',
-      type: CText,
-      options: Map({
-        text: 'Text component',
-      }),
+  base: {
+    guid: Map({
+      guid: 1,
+      uid: 1,
+      released: Stack(),
     }),
-    Map({
-      id: '2',
-      type: CNext,
-      options: Map({
-        text: 'Next component',
+    node: List([
+      Map({
+        id: '0',
+        type: CText,
+        data: Map({
+          text: 'Text component',
+        }),
       }),
-    }),
-  ]),
+      Map({
+        id: '1',
+        type: CNext,
+        data: Map({
+          text: 'Next component',
+        }),
+      }),
+    ]),
+  },
 };

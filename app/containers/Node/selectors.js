@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the node state domain
  */
-const selectNodeDomain = () => (state) => state.get('node');
+const selectNodeDomain = () => (state) => state.getIn(['base', 'node'], []);
 
 /**
  * Other specific selectors
@@ -17,7 +17,7 @@ const selectNodeDomain = () => (state) => state.get('node');
 
 const makeSelectNode = () => createSelector(
   selectNodeDomain(),
-  (substate) => substate.toJS()
+  (substate) => substate.toJS(),
 );
 
 export default makeSelectNode;

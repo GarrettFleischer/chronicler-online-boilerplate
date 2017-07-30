@@ -5,20 +5,35 @@
  */
 
 import { fromJS } from 'immutable';
-import { DEFAULT_ACTION } from './constants';
 
+export const REORDER_COMPONENT_LIST = 'app/Node/REORDER_COMPONENT_LIST';
+export const ADD_COMPONENT = 'app/Node/ADD_COMPONENT';
 
-const initialState = fromJS({});
-
-
-function nodeReducer(state = initialState, action) {
+export default function nodeReducer(state = initialState, action, currentUid) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case ADD_COMPONENT:
+      return state.push(fromJS({ ...action.payload, id: currentUid }));
+
+    case REORDER_COMPONENT_LIST:
+      return fromJS(action.payload);
+
     default:
       return state;
   }
 }
 
+export function reorderComponentList(list) {
+  return {
+    type: REORDER_COMPONENT_LIST,
+    payload: list,
+  };
+}
 
-export default nodeReducer;
+export function addComponent(component) {
+  return {
+    type: ADD_COMPONENT,
+    payload: component,
+  };
+}
+
+const initialState = fromJS({});

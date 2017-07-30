@@ -1,6 +1,4 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
-
+import { DEFAULT_ACTION, defaultAction } from '../reducer';
 
 describe('Node actions', () => {
   describe('Default Action', () => {

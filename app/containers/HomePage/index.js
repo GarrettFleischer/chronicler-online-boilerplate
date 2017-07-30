@@ -9,22 +9,15 @@
  * the linting exception.
  */
 
-import Button from 'material-ui/Button';
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import Node from '../Node';
-import messages from './messages';
 
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <Node
-          dispatch={() => {
-          }}
-        />
-        <Button raised><FormattedMessage {...messages.addComponent} /></Button>
+        <Node />
       </div>
     );
   }
