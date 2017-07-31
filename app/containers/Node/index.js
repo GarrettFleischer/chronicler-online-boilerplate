@@ -37,7 +37,7 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
   }
 
   render() {
-    const { node } = this.props;
+    const { nodeData } = this.props;
     return (
       <div>
         <Helmet
@@ -47,14 +47,6 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
           ]}
         />
         <FormattedMessage {...messages.header} />
-        <DraggableList
-          itemKey="id"
-          template={Component}
-          list={node}
-          onMoveEnd={(newList) => {
-            this.onListChanged(newList);
-          }}
-        />
         <Button
           raised
           onClick={() => {
@@ -63,16 +55,26 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
         ><FormattedMessage {...messages.addComponent} /></Button>
         <Button
           raised
+          disabled={!nodeData.history.canUndo}
           onClick={() => {
             this.onUndoClicked();
           }}
         >Undo</Button>
         <Button
           raised
+          disabled={!nodeData.history.canRedo}
           onClick={() => {
             this.onRedoClicked();
           }}
         >Redo</Button>
+        <DraggableList
+          itemKey="id"
+          template={Component}
+          list={nodeData.node}
+          onMoveEnd={(newList) => {
+            this.onListChanged(newList);
+          }}
+        />
       </div>
     );
   }
@@ -81,11 +83,11 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
 
 Node.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  node: PropTypes.array.isRequired,
+  nodeData: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  node: makeSelectNode(),
+  nodeData: makeSelectNode(),
 });
 
 // function mapStateToProps(state) {

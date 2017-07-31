@@ -1,22 +1,7 @@
-import { fromJS } from 'immutable';
+import { fromJS, is } from 'immutable';
 
 export const UNDO = 'app/UNDO';
 export const REDO = 'app/REDO';
-
-export function undo(changes = 1) {
-  return {
-    type: UNDO,
-    payload: changes,
-  };
-}
-
-export function redo(changes = 1) {
-  return {
-    type: REDO,
-    payload: { changes },
-  };
-}
-
 
 export default function history(reducer) {
   return function historyReducer(state = initialState, action) {
@@ -31,28 +16,30 @@ export default function history(reducer) {
 
     switch (action.type) {
       case UNDO:
-        if (canUndo) {
-          newPresent = past[past.length - 1];
-          newPast = past.slice(0, past.length - 1);
-          newCanUndo = newPast.length > 1;
-          newFuture = [present, ...future];
-          newCanRedo = true;
+        if (!canUndo) {
+          return state;
         }
+        newPresent = past[past.length - 1];
+        newPast = past.slice(0, past.length - 1);
+        newCanUndo = newPast.length > 0;
+        newFuture = [present, ...future];
+        newCanRedo = true;
         break;
 
       case REDO:
-        if (canRedo) {
-          newPresent = future[0];
-          newPast = [...past, present];
-          newCanUndo = true;
-          newFuture = future.slice(1);
-          newCanRedo = newFuture.length > 0;
+        if (!canRedo) {
+          return state;
         }
+        newPresent = future[0];
+        newPast = [...past, present];
+        newCanUndo = true;
+        newFuture = future.slice(1);
+        newCanRedo = newFuture.length > 0;
         break;
 
       default:
         newPresent = reducer(state.get('present'), action);
-        if (newPresent === state.get('present')) {
+        if (is(newPresent, state.get('present'))) {
           return state;
         }
         newPast = [...past, present];
@@ -72,5 +59,18 @@ export default function history(reducer) {
   };
 }
 
+export function undo(changes = 1) {
+  return {
+    type: UNDO,
+    payload: changes,
+  };
+}
+
+export function redo(changes = 1) {
+  return {
+    type: REDO,
+    payload: { changes },
+  };
+}
 
 const initialState = fromJS({ past: [], present: {}, future: [], canUndo: false, canRedo: false });
