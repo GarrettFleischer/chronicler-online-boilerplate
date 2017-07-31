@@ -1,19 +1,21 @@
-import { Map } from 'immutable';
+import { Map, Stack } from 'immutable';
 
 export function acquireUid(state) {
-  const jstate = state.toJS();
-  const released = state.get('released');
+  const guid = state.get('guid');
+  const released = Stack(state.get('released'));
   if (released.peek()) {
-    return Map({ ...jstate, uid: released.peek(), released: released.pop() });
+    return Map({ guid, uid: released.peek(), released: released.pop() });
   }
 
-  const nextGuid = state.get('guid') + 1;
-  return Map({ ...jstate, guid: nextGuid, uid: nextGuid });
+  const nextGuid = guid + 1;
+  return Map({ guid: nextGuid, uid: nextGuid, released });
 }
+
 
 export function releaseUid(state, uid) {
   return Map({ ...state.toJS(), released: state.get('released').push(uid) });
 }
+
 
 export function currentUid(state) {
   return state.get('uid');

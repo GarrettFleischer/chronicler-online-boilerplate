@@ -4,11 +4,14 @@
  */
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
-import { fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { combineReducers } from 'redux-immutable';
+import { makeText } from './components/Component/types';
 import nodeReducer, { ADD_COMPONENT } from './containers/Node/reducer';
+import undoable from './stateHistory';
 import { acquireUid, currentUid } from './uniqueId';
+
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -17,7 +20,7 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     language: languageProviderReducer,
-    base: baseReducer,
+    base: undoable(baseReducer),
     ...asyncReducers,
   });
 }
@@ -58,19 +61,16 @@ const routeInitialState = fromJS({
  *
  */
 function baseReducer(state = baseInitialState, action) {
-  const jstate = state.toJS();
-
   const guid = guidReducer(state.get('guid'), action);
   const node = nodeReducer(state.get('node'), action, currentUid(guid));
 
-  return fromJS({
-    ...jstate,
+  return Map({
     guid,
     node,
   });
 }
 
-const baseInitialState = fromJS({});
+const baseInitialState = fromJS({ node: [makeText('text')] });
 
 
 /*
@@ -88,4 +88,4 @@ function guidReducer(state = guidInitialState, action) {
   }
 }
 
-const guidInitialState = fromJS({});
+const guidInitialState = fromJS({ guid: 1, uid: 1 });

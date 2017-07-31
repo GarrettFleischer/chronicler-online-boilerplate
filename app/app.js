@@ -39,6 +39,7 @@ import { translationMessages } from './i18n';
 // Import root routes
 import createRoutes from './routes';
 import configureStore from './store';
+import { mainTheme } from './theme';
 
 
 injectTapEventPlugin();
@@ -65,7 +66,7 @@ const rootRoute = {
 
 const render = (messages) => {
   ReactDOM.render(
-    <MuiThemeProvider>
+    <MuiThemeProvider theme={mainTheme}>
       <Provider store={store}>
         <LanguageProvider messages={messages}>
           <Router
@@ -80,7 +81,7 @@ const render = (messages) => {
         </LanguageProvider>
       </Provider>
     </MuiThemeProvider>,
-    document.getElementById('app')
+    document.getElementById('app'),
   );
 };
 
@@ -105,7 +106,8 @@ if (!window.Intl) {
     .catch((err) => {
       throw err;
     });
-} else {
+}
+else {
   render(translationMessages);
 }
 

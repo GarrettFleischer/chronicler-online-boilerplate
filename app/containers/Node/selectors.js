@@ -1,10 +1,12 @@
+import { List } from 'immutable';
 import { createSelector } from 'reselect';
+import { makeText } from '../../components/Component/types';
 
 
 /**
  * Direct selector to the node state domain
  */
-const selectNodeDomain = () => (state) => state.getIn(['base', 'node'], []);
+const selectNodeDomain = (state) => state.getIn(['base', 'present', 'node'], List([makeText('error')]));
 
 /**
  * Other specific selectors
@@ -16,7 +18,7 @@ const selectNodeDomain = () => (state) => state.getIn(['base', 'node'], []);
  */
 
 const makeSelectNode = () => createSelector(
-  selectNodeDomain(),
+  selectNodeDomain,
   (substate) => substate.toJS(),
 );
 

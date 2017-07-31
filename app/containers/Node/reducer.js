@@ -22,7 +22,7 @@ export default function nodeReducer(state = initialState, action, currentUid) {
   }
 }
 
-export function reorderComponentList(list) {
+export function componentListChanged(list) {
   return {
     type: REORDER_COMPONENT_LIST,
     payload: list,
@@ -36,4 +36,4 @@ export function addComponent(component) {
   };
 }
 
-const initialState = fromJS({});
+const initialState = fromJS([]);

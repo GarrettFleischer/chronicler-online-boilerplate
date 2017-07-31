@@ -13,14 +13,27 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Component from '../../components/Component';
 import { makeText } from '../../components/Component/types';
+import { redo, undo } from '../../stateHistory';
 import messages from './messages';
-import { addComponent } from './reducer';
+import { addComponent, componentListChanged } from './reducer';
 import makeSelectNode from './selectors';
 
 
 export class Node extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   onAddComponentClicked() {
     this.props.dispatch(addComponent(makeText('Component: ')));
+  }
+
+  onListChanged(newList) {
+    this.props.dispatch(componentListChanged(newList));
+  }
+
+  onUndoClicked() {
+    this.props.dispatch(undo());
+  }
+
+  onRedoClicked() {
+    this.props.dispatch(redo());
   }
 
   render() {
@@ -38,6 +51,9 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
           itemKey="id"
           template={Component}
           list={node}
+          onMoveEnd={(newList) => {
+            this.onListChanged(newList);
+          }}
         />
         <Button
           raised
@@ -45,6 +61,18 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
             this.onAddComponentClicked();
           }}
         ><FormattedMessage {...messages.addComponent} /></Button>
+        <Button
+          raised
+          onClick={() => {
+            this.onUndoClicked();
+          }}
+        >Undo</Button>
+        <Button
+          raised
+          onClick={() => {
+            this.onRedoClicked();
+          }}
+        >Redo</Button>
       </div>
     );
   }
@@ -60,6 +88,11 @@ const mapStateToProps = createStructuredSelector({
   node: makeSelectNode(),
 });
 
+// function mapStateToProps(state) {
+//   return {
+//     node: state.getIn(['base', 'present', 'node'], List([makeText('error 2')])).toJS(),
+//   };
+// }
 
 function mapDispatchToProps(dispatch) {
   return {
