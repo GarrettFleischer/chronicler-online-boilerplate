@@ -8,7 +8,7 @@
 
 import DragHandle from 'material-ui-icons/DragHandle';
 import Card, { CardContent } from 'material-ui/Card';
-import Divider from 'material-ui/Divider';
+import Grid from 'material-ui/Grid';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -32,18 +32,25 @@ function content(item) {
 
 
 class Component extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  // noinspection JSUnusedGlobalSymbols
   getDragHeight() {
     return 48;
   }
+
 
   render() {
     const { dragHandle, item } = this.props;
     return (
       <Card>
         <CardContent>
-          {dragHandle(<div><DragHandle /></div>)}
-          <Divider />
-          {content(item)}
+          <Grid container gutter={8}>
+            <Grid item xs={1}>
+              {dragHandle(<DragHandle />)}
+            </Grid>
+            <Grid item xl>
+              {content(item)}
+            </Grid>
+          </Grid>
         </CardContent>
       </Card>
     );

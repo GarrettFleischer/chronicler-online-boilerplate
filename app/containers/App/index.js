@@ -12,6 +12,9 @@
  */
 
 import AppBar from 'material-ui/AppBar';
+import Grid from 'material-ui/Grid';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -26,10 +29,20 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
-        <AppBar title="Chronicler" />
-        <div>
-          {React.Children.toArray(this.props.children)}
-        </div>
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <Typography type="title" color="inherit">
+              Chronicler
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Grid container gutter={8}>
+          <Grid item xs={2} />
+          <Grid item xs={8}>
+            {React.Children.toArray(this.props.children)}
+          </Grid>
+          <Grid item xs={2} />
+        </Grid>
       </div>
     );
   }

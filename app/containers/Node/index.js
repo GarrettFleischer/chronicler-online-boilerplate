@@ -5,10 +5,14 @@
  */
 
 import { Button } from 'material-ui';
-import React, { PropTypes } from 'react';
+import Paper from 'material-ui/Paper';
+import { createStyleSheet, withStyles } from 'material-ui/styles';
+import PropTypes from 'prop-types';
+import React from 'react';
 import DraggableList from 'react-draggable-list';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
+import { mouseTrap } from 'react-mousetrap';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Component from '../../components/Component';
@@ -19,34 +23,60 @@ import { addComponent, componentListChanged } from './reducer';
 import makeSelectNode from './selectors';
 
 
+const styleSheet = createStyleSheet((theme) => ({
+  paper: {
+    marginTop: 30,
+    padding: 16,
+    textAlign: 'center',
+    backgroundColor: theme.palette.text.secondary,
+  },
+}));
+
+
 export class Node extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  componentWillMount() {
+    this.props.bindShortcut('ctrl+z', () => this.onUndoClicked());
+    this.props.bindShortcut(['ctrl+shift+z', 'ctrl+y'], () => this.onRedoClicked());
+  }
+
+
+  componentWillUnmount() {
+    this.props.unbindShortcut('ctrl+z');
+    this.props.unbindShortcut(['ctrl+shift+z', 'ctrl+y']);
+  }
+
+
   onAddComponentClicked() {
     this.props.dispatch(addComponent(makeText('Component: ')));
   }
+
 
   onListChanged(newList) {
     this.props.dispatch(componentListChanged(newList));
   }
 
+
   onUndoClicked() {
     this.props.dispatch(undo());
   }
+
 
   onRedoClicked() {
     this.props.dispatch(redo());
   }
 
+
   render() {
-    const { nodeData } = this.props;
+    const { nodeData, classes } = this.props;
     return (
-      <div>
+      <Paper className={classes.paper}>
         <Helmet
           title="Node"
           meta={[
             { name: 'description', content: 'Description of Node' },
           ]}
         />
-        <FormattedMessage {...messages.header} />
         <Button
           raised
           onClick={() => {
@@ -63,19 +93,15 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
         <Button
           raised
           disabled={!nodeData.history.canRedo}
-          onClick={() => {
-            this.onRedoClicked();
-          }}
+          onClick={() => this.onRedoClicked()}
         >Redo</Button>
         <DraggableList
           itemKey="id"
           template={Component}
           list={nodeData.node}
-          onMoveEnd={(newList) => {
-            this.onListChanged(newList);
-          }}
+          onMoveEnd={(newList) => this.onListChanged(newList)}
         />
-      </div>
+      </Paper>
     );
   }
 }
@@ -84,6 +110,9 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
 Node.propTypes = {
   dispatch: PropTypes.func.isRequired,
   nodeData: PropTypes.object.isRequired,
+  bindShortcut: PropTypes.func.isRequired,
+  unbindShortcut: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -103,4 +132,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Node);
+export default connect(mapStateToProps, mapDispatchToProps)(mouseTrap(withStyles(styleSheet)(Node)));
