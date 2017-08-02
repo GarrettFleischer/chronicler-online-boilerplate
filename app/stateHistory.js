@@ -1,12 +1,12 @@
 import { fromJS, is } from 'immutable';
 
+
 export const UNDO = 'app/UNDO';
 export const REDO = 'app/REDO';
 
 export default function history(reducer) {
   return function historyReducer(state = initialState, action) {
-    const jstate = state.toJS();
-    const { past, present, future, canUndo, canRedo } = jstate;
+    const { past, present, future, canUndo, canRedo } = state.toJS();
 
     let newPast = past;
     let newPresent = present;
@@ -16,25 +16,31 @@ export default function history(reducer) {
 
     switch (action.type) {
       case UNDO:
-        if (!canUndo) {
-          return state;
+        for (let i = 0; i < action.payload.changes; i += 1) {
+          if (!newCanUndo) {
+            return state;
+          }
+
+          newFuture = [newPresent, ...newFuture];
+          newPresent = newPast[past.length - 1];
+          newPast = newPast.slice(0, past.length - 1);
+          newCanUndo = newPast.length > 0;
+          newCanRedo = true;
         }
-        newPresent = past[past.length - 1];
-        newPast = past.slice(0, past.length - 1);
-        newCanUndo = newPast.length > 0;
-        newFuture = [present, ...future];
-        newCanRedo = true;
         break;
 
       case REDO:
-        if (!canRedo) {
-          return state;
+        for (let i = 0; i < action.payload.changes; i += 1) {
+          if (!newCanRedo) {
+            return state;
+          }
+
+          newPast = [...newPast, newPresent];
+          newPresent = newFuture[0];
+          newFuture = newFuture.slice(1);
+          newCanUndo = true;
+          newCanRedo = newFuture.length > 0;
         }
-        newPresent = future[0];
-        newPast = [...past, present];
-        newCanUndo = true;
-        newFuture = future.slice(1);
-        newCanRedo = newFuture.length > 0;
         break;
 
       default:
@@ -59,12 +65,14 @@ export default function history(reducer) {
   };
 }
 
+
 export function undo(changes = 1) {
   return {
     type: UNDO,
-    payload: changes,
+    payload: { changes },
   };
 }
+
 
 export function redo(changes = 1) {
   return {
@@ -73,4 +81,5 @@ export function redo(changes = 1) {
   };
 }
 
-const initialState = fromJS({ past: [], present: {}, future: [], canUndo: false, canRedo: false });
+
+export const initialState = fromJS({ past: [], present: {}, future: [], canUndo: false, canRedo: false });

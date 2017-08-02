@@ -7,10 +7,9 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import { fromJS, Map } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { combineReducers } from 'redux-immutable';
-import { makeText } from './components/Component/types';
-import nodeReducer, { ADD_COMPONENT } from './containers/Node/reducer';
+import guidReducer, { currentUid, initialState as guidInitialState } from 'uniqueId';
+import nodeReducer, { initialState as nodeInitialState } from './containers/Node/reducer';
 import undoable from './stateHistory';
-import { acquireUid, currentUid } from './uniqueId';
 
 
 /**
@@ -24,6 +23,7 @@ export default function createReducer(asyncReducers) {
     ...asyncReducers,
   });
 }
+
 
 /*
  * routeReducer
@@ -48,6 +48,7 @@ function routeReducer(state = routeInitialState, action) {
   }
 }
 
+
 // Initial routing state
 const routeInitialState = fromJS({
   locationBeforeTransitions: null,
@@ -64,28 +65,9 @@ function baseReducer(state = baseInitialState, action) {
   const guid = guidReducer(state.get('guid'), action);
   const node = nodeReducer(state.get('node'), action, currentUid(guid));
 
-  return Map({
-    guid,
-    node,
-  });
+  return Map({ guid, node });
 }
 
-const baseInitialState = fromJS({ node: [makeText('text')] });
 
+const baseInitialState = fromJS({ guid: guidInitialState, node: nodeInitialState });
 
-/*
- * Guid Reducer
- *
- * The reducer updates guid for adding and removing elements
- *
- */
-function guidReducer(state = guidInitialState, action) {
-  switch (action.type) {
-    case ADD_COMPONENT:
-      return acquireUid(state);
-    default:
-      return state;
-  }
-}
-
-const guidInitialState = fromJS({ guid: 1, uid: 1 });
