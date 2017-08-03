@@ -1,4 +1,4 @@
-import { fromJS, Map, Stack } from 'immutable';
+import { Map, Stack } from 'immutable';
 import { ADD_COMPONENT } from './containers/Node/reducer';
 
 /*
@@ -7,7 +7,7 @@ import { ADD_COMPONENT } from './containers/Node/reducer';
  * The reducer updates guid for adding and removing elements
  *
  */
-export default function guidReducer(state = initialState, action) {
+export default function guidReducer(state, action) {
   switch (action.type) {
     case ADD_COMPONENT:
       return acquireUid(state);
@@ -39,4 +39,4 @@ export function currentUid(state) {
 }
 
 
-export const initialState = fromJS({ guid: 0, uid: 0 });
+// export const initialState = fromJS({ guid: 0, uid: 0 });

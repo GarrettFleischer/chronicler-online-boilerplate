@@ -2,11 +2,11 @@ import { List, Stack } from 'immutable';
 import { NodeType } from './nodes';
 
 
-export const Type = 'Type';
-export const Scenes = 'Scenes';
-export const Nodes = 'Nodes';
-export const Components = 'Components';
-
+export const Type = 'type';
+export const Scenes = 'scenes';
+export const Nodes = 'nodes';
+export const Components = 'components';
+export const Id = 'id';
 
 /**
  * @brief   public function to find the path through the map to the given id
@@ -117,8 +117,7 @@ export function FindSceneContainingId(state, id) {
         state.get(Nodes).forEach((node) => {
           if (node.get('Id') === id) {
             found = state;
-          }
-          else if (node.get(Components) !== null) {
+          } else if (node.get(Components) !== null) {
             node.get(Components).forEach((action) => {
               if (action.get(Type) === NodeType.LABEL && action.get('Id') === id) {
                 found = state;
@@ -266,6 +265,7 @@ function HandleMultipleParents(state, rows) {
           // calc max parent row + 1
           const parents = FindParents(state, currentId);
           let newY = y;
+          // eslint-disable-next-line no-loop-func
           parents.forEach((parent) => {
             const below = IsBelow(newRows, currentId, parent.get('Id'));
             if (parent.get('Id') !== currentId && below) {
@@ -306,14 +306,20 @@ function IsBelow(rows, childId, parentId) {
     // find the parent in the row
     for (let x = 0; x < row.size; ++x) {
       const id = row.get(x);
-      if (id === parentId) foundParent = true;
+      if (id === parentId) {
+        foundParent = true;
+      }
     }
     // find the child in the row
     for (let x = 0; x < row.size; ++x) {
       const id = row.get(x);
-      if (id === childId && !foundParent) return false;
+      if (id === childId && !foundParent) {
+        return false;
+      }
     }
-    if (foundParent) return true;
+    if (foundParent) {
+      return true;
+    }
   }
 
   return false;
@@ -361,10 +367,9 @@ function FindPathRecursive(state, id, currentPath) {
       break;
 
     case NodeType.SCENE:
-      if (state.get('Id') === id) {
+      if (state.get(Id) === id) {
         found = currentPath;
-      }
-      else if (state.get(Nodes) !== null) {
+      } else if (state.get(Nodes) !== null) {
         state.get(Nodes).forEach((node, nodeIndex) => {
           found = FindPathRecursive(node, id, currentPath.concat([Nodes, nodeIndex]));
           return !found;
@@ -373,10 +378,9 @@ function FindPathRecursive(state, id, currentPath) {
       break;
 
     case NodeType.NODE:
-      if (state.get('Id') === id) {
+      if (state.get(Id) === id) {
         found = currentPath;
-      }
-      else if (state.get(Components) !== null) {
+      } else if (state.get(Components) !== null) {
         state.get(Components).forEach((action, actionIndex) => {
           found = FindPathRecursive(action, id, currentPath.concat([Components, actionIndex]));
           return !found;
@@ -385,14 +389,16 @@ function FindPathRecursive(state, id, currentPath) {
       break;
 
     case NodeType.LABEL:
-      if (state.get('Id') === id) {
+      if (state.get(Id) === id) {
         found = currentPath;
       }
       break;
 
     default:
-      return found;
+      break;
   }
+
+  return found;
 }
 
 
@@ -429,8 +435,10 @@ function LinksToId(actionState, id) {
       break;
 
     default:
-      return found;
+      break;
   }
+
+  return found;
 }
 
 
@@ -451,7 +459,9 @@ function FindChildrenRecursive(state, substate) {
       if (substate.get('Links') !== null) {
         substate.get('Links').forEach((link) => {
           const linkedNode = FindById(state, link.get('LinkId'));
-          if (linkedNode) found = found.push(linkedNode);
+          if (linkedNode) {
+            found = found.push(linkedNode);
+          }
         });
       }
       break;
@@ -462,13 +472,17 @@ function FindChildrenRecursive(state, substate) {
     case NodeType.GOSUB_SCENE:
     case NodeType.NEXT: {
       const linkedNode = FindById(state, substate.get('LinkId'));
-      if (linkedNode) found = found.push(linkedNode);
+      if (linkedNode) {
+        found = found.push(linkedNode);
+      }
     }
       break;
 
     default:
-      return found;
+      break;
   }
+
+  return found;
 }
 
 

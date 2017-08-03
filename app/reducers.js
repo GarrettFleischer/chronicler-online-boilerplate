@@ -7,9 +7,10 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import { fromJS, Map } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { combineReducers } from 'redux-immutable';
-import guidReducer, { currentUid, initialState as guidInitialState } from 'uniqueId';
-import nodeReducer, { initialState as nodeInitialState } from './containers/Node/reducer';
+import guidReducer, { currentUid } from 'uniqueId';
+import nodeReducer from './containers/Node/reducer';
 import undoable from './stateHistory';
+import { FindById } from './core';
 
 
 /**
@@ -61,13 +62,22 @@ const routeInitialState = fromJS({
  * The reducer updates guid as necessary and passes the current uid to further reducers
  *
  */
-function baseReducer(state = baseInitialState, action) {
+function baseReducer(state, action) {
   const guid = guidReducer(state.get('guid'), action);
-  const node = nodeReducer(state.get('node'), action, currentUid(guid));
+  // console.log(FindById(state.get('model'), state.getIn(['view', 'id'])).toJS());
+  const node = nodeReducer(FindById(state.get('model'), state.getIn(['view', 'id'])), action, currentUid(guid));
+  const view = viewReducer(state, action);
 
-  return Map({ guid, node });
+  return Map({ view, guid, node });
 }
 
 
-const baseInitialState = fromJS({ guid: guidInitialState, node: nodeInitialState });
+// const baseInitialState = fromJS({ guid: guidInitialState, model: nodeInitialState });
 
+
+function viewReducer(state, action) {
+  switch (action) {
+    default:
+      return state;
+  }
+}

@@ -1,5 +1,6 @@
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
+import { initialState } from 'initialState';
 import '!file-loader?name=[name].[ext]!./favicon.ico';
 import '!file-loader?name=[name].[ext]!./manifest.json';
 // Needed for redux-saga es6 generator support
@@ -12,7 +13,6 @@ import { makeSelectLocationState } from 'containers/App/selectors';
 import LanguageProvider from 'containers/LanguageProvider';
 import 'file-loader?name=[name].[ext]!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
-import { initialState } from 'initialState';
 /**
  * app.js
  *
@@ -49,6 +49,7 @@ injectTapEventPlugin();
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 // const initialState = { node: List([]) };
+// console.log(initialState);
 const store = configureStore(initialState, browserHistory);
 
 // Sync history and store, as the react-router-redux reducer
@@ -106,8 +107,7 @@ if (!window.Intl) {
     .catch((err) => {
       throw err;
     });
-}
-else {
+} else {
   render(translationMessages);
 }
 

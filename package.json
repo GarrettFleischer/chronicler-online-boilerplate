@@ -106,6 +106,10 @@
         "error",
         "always"
       ],
+      "brace-style": [
+        "error",
+        "1tbs"
+      ],
       "arrow-body-style": [
         2,
         "as-needed"
@@ -113,10 +117,6 @@
       "comma-dangle": [
         2,
         "always-multiline"
-      ],
-      "brace-style": [
-        "error",
-        "stroustrup"
       ],
       "no-plusplus": [
         "error",

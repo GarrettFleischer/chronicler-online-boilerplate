@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable';
 import {
   LinkType,
   makeBase,
@@ -15,29 +14,39 @@ import {
 } from './nodes';
 
 
-export const initialState = fromJS({
+export const initialState = {
   base: {
     past: [],
     present: {
-      guid: {
-        guid: 19,
-        uid: 11,
-        released: [7, 9],
-      },
-      base: initialBaseState(),
-      view: {
-        type: NodeType.NODE,
-        id: 8,
-      },
+      view: initialViewState(),
+      guid: initialGuidState(),
+      model: initialModelState(),
     },
     future: [],
     canUndo: false,
     canRedo: false,
   },
-});
+};
 
 
-function initialBaseState() {
+function initialViewState() {
+  return ({
+    type: NodeType.NODE,
+    id: 8,
+  });
+}
+
+
+function initialGuidState() {
+  return ({
+    guid: 19,
+    uid: 11,
+    released: [7, 9],
+  });
+}
+
+
+function initialModelState() {
   return (
     makeBase(0, [
       // SCENE 1

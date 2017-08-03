@@ -13,17 +13,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-import { CNext, CText } from './types';
+import { NodeType } from '../../nodes';
 
 
 function content(item) {
   switch (item.type) {
-    case CText:
-      return <div style={{ paddingTop: '10px' }}>{`${item.data.text} ${item.id.toString()}`}</div>;
-    case CNext:
-      return <div style={{ paddingTop: '10px' }}>{`${item.data.text} ${item.id.toString()}`}</div>;
+    case NodeType.NEXT:
+      return <div style={{ paddingTop: '10px' }}>{`${item.text} ${item.id.toString()}`}</div>;
+    case NodeType.TEXT:
+      return <div style={{ paddingTop: '10px' }}>{`${item.text} ${item.id.toString()}`}</div>;
     default:
-      return <div><FormattedMessage {...messages.unknown} /></div>;
+      return <div><FormattedMessage {...messages.unknown} /> {item.id.toString()}</div>;
   }
 }
 

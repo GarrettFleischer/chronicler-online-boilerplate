@@ -40,4 +40,4 @@ export function addComponent(component) {
 }
 
 
-export const initialState = fromJS([]);
+export const initialState = fromJS({ components: [] });

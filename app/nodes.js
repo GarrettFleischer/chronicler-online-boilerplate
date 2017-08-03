@@ -27,38 +27,38 @@ export const LinkType = {
 };
 
 
-export function makeBase(id, scenes) {
+export function makeBase(id, scenes = []) {
   return { type: NodeType.BASE, id, scenes };
 }
 
 
-export function makeScene(id, name, nodes) {
+export function makeScene(id, name, nodes = []) {
   return { type: NodeType.SCENE, id, name, nodes };
 }
 
 
-export function makeNode(id, label, components, x = 0, y = 0) {
+export function makeNode(id, label, components = [], x = 0, y = 0) {
   return { type: NodeType.NODE, id, x, y, label, components };
 }
 
 
-export function makeLink(id, linkType, text, linkId, components) {
-  return { type: NodeType.LINK, id, linkType, Text: text, linkId, components };
+export function makeLink(id, linkType, text, linkId, components = []) {
+  return { type: NodeType.LINK, id, linkType, text, linkId, components };
 }
 
 
-export function makeIfLink(id, expr, text, linkId, components) {
-  return { type: NodeType.IF_LINK, id, Expr: expr, Text: text, linkId, components };
+export function makeIfLink(id, expr, text, linkId, components = []) {
+  return { type: NodeType.IF_LINK, id, expr, text, linkId, components };
 }
 
 
 export function makeNext(id, text, linkId) {
-  return { type: NodeType.NEXT, id, Text: text, linkId };
+  return { type: NodeType.NEXT, id, text, linkId };
 }
 
 
 export function makeText(id, text) {
-  return { type: NodeType.TEXT, id, Text: text };
+  return { type: NodeType.TEXT, id, text };
 }
 
 
@@ -83,7 +83,7 @@ export function makeTempAction(id, name) {
 
 
 export function makeSet(id, name, op, expr) {
-  return { type: NodeType.SET, id, name, Op: op, Expr: expr };
+  return { type: NodeType.SET, id, name, Op: op, expr };
 }
 
 

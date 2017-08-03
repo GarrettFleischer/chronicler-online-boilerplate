@@ -5,8 +5,8 @@ import { FindById } from '../../core';
 /**
  * Direct selector to the node state domain
  */
-const selectBaseDomain = (state) => state.getIn(['base', 'current', 'base']);
-const selectViewDomain = (state) => state.getIn(['base', 'current', 'view']);
+const selectModelDomain = (state) => state.getIn(['base', 'present', 'model']);
+const selectViewDomain = (state) => state.getIn(['base', 'present', 'view']);
 const selectHistoryDomain = (state) => state.get('base');
 
 /**
@@ -19,11 +19,11 @@ const selectHistoryDomain = (state) => state.get('base');
  */
 
 const makeSelectNode = () => createSelector(
-  selectBaseDomain,
+  selectModelDomain,
   selectViewDomain,
   selectHistoryDomain,
-  (base, view, history) => ({
-    node: FindById(base, view.get('id')),
+  (model, view, history) => ({
+    node: findNode(model, view.get('id')),
     history: { canUndo: history.get('canUndo'), canRedo: history.get('canRedo') },
   }),
 );
@@ -32,3 +32,8 @@ export default makeSelectNode;
 // export {
 //   selectNodeDomain,
 // };
+
+function findNode(model, id) {
+  const found = FindById(model, id);
+  return found.toJS();
+}

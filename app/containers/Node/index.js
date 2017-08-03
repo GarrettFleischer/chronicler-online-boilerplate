@@ -16,7 +16,7 @@ import { mouseTrap } from 'react-mousetrap';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Component from '../../components/Component';
-import { makeText } from '../../components/Component/types';
+import { makeText } from '../../nodes';
 import { redo, undo } from '../../stateHistory';
 import messages from './messages';
 import { addComponent, componentListChanged } from './reducer';
@@ -48,7 +48,7 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
 
 
   onAddComponentClicked() {
-    this.props.dispatch(addComponent(makeText('Component: ')));
+    this.props.dispatch(addComponent(makeText(-1, 'text')));
   }
 
 
@@ -118,12 +118,6 @@ Node.propTypes = {
 const mapStateToProps = createStructuredSelector({
   data: makeSelectNode(),
 });
-
-// function mapStateToProps(state) {
-//   return {
-//     node: state.getIn(['base', 'present', 'node'], List([makeText('error 2')])).toJS(),
-//   };
-// }
 
 function mapDispatchToProps(dispatch) {
   return {
