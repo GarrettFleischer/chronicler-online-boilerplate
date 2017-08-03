@@ -28,7 +28,7 @@ const styleSheet = createStyleSheet((theme) => ({
     marginTop: 30,
     padding: 16,
     textAlign: 'center',
-    backgroundColor: theme.palette.text.secondary,
+    color: theme.palette.text.secondary,
   },
 }));
 
@@ -68,7 +68,7 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
 
 
   render() {
-    const { nodeData, classes } = this.props;
+    const { data, classes } = this.props;
     return (
       <Paper className={classes.paper}>
         <Helmet
@@ -85,20 +85,20 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
         ><FormattedMessage {...messages.addComponent} /></Button>
         <Button
           raised
-          disabled={!nodeData.history.canUndo}
+          disabled={!data.history.canUndo}
           onClick={() => {
             this.onUndoClicked();
           }}
         >Undo</Button>
         <Button
           raised
-          disabled={!nodeData.history.canRedo}
+          disabled={!data.history.canRedo}
           onClick={() => this.onRedoClicked()}
         >Redo</Button>
         <DraggableList
           itemKey="id"
           template={Component}
-          list={nodeData.node}
+          list={data.node.components}
           onMoveEnd={(newList) => this.onListChanged(newList)}
         />
       </Paper>
@@ -108,15 +108,15 @@ export class Node extends React.PureComponent { // eslint-disable-line react/pre
 
 
 Node.propTypes = {
+  data: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  nodeData: PropTypes.object.isRequired,
   bindShortcut: PropTypes.func.isRequired,
   unbindShortcut: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  nodeData: makeSelectNode(),
+  data: makeSelectNode(),
 });
 
 // function mapStateToProps(state) {

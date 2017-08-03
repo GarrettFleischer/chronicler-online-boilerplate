@@ -13,10 +13,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-
-
-export const CText = 'TEXT_COMPONENT';
-export const CNext = 'NEXT_COMPONENT';
+import { CNext, CText } from './types';
 
 
 function content(item) {

@@ -1,4 +1,5 @@
-import { CNext, CText } from './index';
+export const CText = 'TEXT_COMPONENT';
+export const CNext = 'NEXT_COMPONENT';
 
 export function makeText(text) {
   return {

@@ -1,11 +1,12 @@
-import { List } from 'immutable';
 import { createSelector } from 'reselect';
+import { FindById } from '../../core';
 
 
 /**
  * Direct selector to the node state domain
  */
-const selectNodeDomain = (state) => state.getIn(['base', 'present', 'node'], List());
+const selectBaseDomain = (state) => state.getIn(['base', 'current', 'base']);
+const selectViewDomain = (state) => state.getIn(['base', 'current', 'view']);
 const selectHistoryDomain = (state) => state.get('base');
 
 /**
@@ -18,15 +19,16 @@ const selectHistoryDomain = (state) => state.get('base');
  */
 
 const makeSelectNode = () => createSelector(
-  selectNodeDomain,
+  selectBaseDomain,
+  selectViewDomain,
   selectHistoryDomain,
-  (node, history) => ({
-    node: node.toJS(),
+  (base, view, history) => ({
+    node: FindById(base, view.get('id')),
     history: { canUndo: history.get('canUndo'), canRedo: history.get('canRedo') },
   }),
 );
 
 export default makeSelectNode;
-export {
-  selectNodeDomain,
-};
+// export {
+//   selectNodeDomain,
+// };
